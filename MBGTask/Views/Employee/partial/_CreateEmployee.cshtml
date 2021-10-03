@@ -1,0 +1,43 @@
+﻿@model MBGTask.Models.Employee
+
+    @{
+        List<SelectListItem> listItems = new List<SelectListItem>();
+        listItems.Add(new SelectListItem
+        {
+            Text = "Software Engineer",
+            Value = "Software Engineer"
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Trainee Engineer",
+            Value = "Trainee Engineer",
+            Selected = true
+        });
+        listItems.Add(new SelectListItem
+        {
+            Text = "Quality Engineer",
+            Value = "Quality Engineer"
+        });
+    }
+    @Html.HiddenFor(model => model.empid)
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Employee Name", @type = "text" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Email)
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Employee Email", @type = "email" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.Designation)
+            @Html.DropDownListFor(model => model.Designation, listItems, "-- Select Designation --", new { @class = "form-control"})
+            @Html.ValidationMessageFor(model => model.Designation,"", new { @class = "text-danger" })
+        </div>
+    </div>

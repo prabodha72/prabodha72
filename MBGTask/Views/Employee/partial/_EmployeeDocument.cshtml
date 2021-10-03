@@ -1,0 +1,129 @@
+﻿@model MBGTask.Models.EmployeeDocument
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Emirates ID",
+        Value = "Emirates ID"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Degree certificate",
+        Value = "Degree certificate",
+        Selected = true
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Passport Copy",
+        Value = "Passport Copy"
+    });
+
+    listItems.Add(new SelectListItem
+    {
+        Text = "Resume",
+        Value = "Resume"
+    });
+}
+@Html.HiddenFor(model => model.employee.empid)
+@Html.HiddenFor(model => model.documents.EmpId)
+<hr />
+<p>Personal Details</p>
+<hr />
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.employee.Name)
+            @Html.EditorFor(model => model.employee.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.employee.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.employee.Email)
+            @Html.EditorFor(model => model.employee.Email, new { htmlAttributes = new { @class = "form-control", @type = "text", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.employee.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.employee.Designation)
+            @Html.EditorFor(model => model.employee.Designation, new { htmlAttributes = new { @class = "form-control", @type = "text", @disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.employee.Designation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<hr />
+<p>Documents</p>
+<hr />
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.documents.FileName)
+            @Html.DropDownListFor(model => model.documents.FileName, listItems, "-- Select Designation --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.documents.FileName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.documents.FilePath)
+            @Html.TextBoxFor(model => model.documents.FilePath, "", new { @type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.documents.FilePath, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+            <label style="margin-bottom: 0;">Action</label>
+            <button class="btn btn-block btn-primary2">Upload File</button>
+        </div>
+    </div>
+</div>
+
+@{
+    int slcount = 1;
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                SL.No
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.documents.FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.documents.CreateDate)
+            </th>
+            <th></th>
+        </tr>
+        @if (Model.doclist.Count() > 0)
+        {
+            foreach (var item in Model.doclist)
+            {
+                <tr>
+                    <td>
+                        @(slcount++)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Download", "DownloadDocument", new { controller = "Employee", id = item.EmpDetId }, new { @class = "btn btn-primary2" })
+                        @Html.ActionLink("View", "ViewDocument", new { controller = "Employee", id = item.EmpDetId }, new { @class = "btn btn-primary2", @target ="_blank" })
+                        @Html.ActionLink("Delete", "DeleteDocument", new { controller = "Employee", id = item.EmpDetId, empid = item.EmpId }, new { @class = "btn btn-primary2" })
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4"> No data found....</td>
+            </tr>
+        }
+    </table>
+</div>
+

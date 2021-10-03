@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MBGTask.Models.Employee>
+
+@{
+    ViewBag.Title = "Search Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New Employee", "CreateEmployee", new { controller = "Employee" }, new { @class = "btn btn-primary2" })
+</p>
+@{
+    int slcount = 1;
+}
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                SL.No
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th></th>
+        </tr>
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @(slcount++)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Designation)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditEmployee", new { controller = "Employee", id = item.empid }, new { @class = "btn btn-primary2" }) 
+                        @Html.ActionLink("Details", "ViewEmployee", new { controller = "Employee", id = item.empid }, new { @class = "btn btn-primary2" }) 
+                        @Html.ActionLink("Delete", "DeleteEmployee", new { controller = "Employee", id = item.empid }, new { @class = "btn btn-primary2" })
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+               <td colspan="5"> No data found....</td>              
+            </tr>
+        }
+
+
+    </table>
+</div>
+

@@ -1,0 +1,4 @@
+﻿
+@Html.ActionLink("Employee Details", "ViewEmployee", new { controller = "Employee" , id = TempData["id"]}, new { @class = "btn btn-primary2" })
+@Html.ActionLink("Edit Employee", "EditEmployee", new { controller = "Employee", id = TempData["id"] }, new { @class = "btn btn-primary2" })
+@Html.ActionLink("Document", "DocumentEmployee", new { controller = "Employee", id = TempData["id"] }, new { @class = "btn btn-primary2" })

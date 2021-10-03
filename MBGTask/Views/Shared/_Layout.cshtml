@@ -1,0 +1,104 @@
+﻿@using MBGTask.Controllers;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBG Task :: @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+    <div class="container-fluid">
+        <!--top Navigation -->
+        <aside class="navigation-header">
+            <div class="odd-nav-brand">
+                <h4 class="visible-xs">MBG task</h4>
+            </div>
+        </aside>
+
+        <!--left navigation-->
+        <aside class="left-slide">
+            <section class="odd-brand">
+                <h4 class="hidden-xs">MBG task</h4>
+                <center>
+                    <button class="nav-toggle-botton visible-xs">
+                        <span class="nav-toggle-bar"></span>
+                        <span class="nav-toggle-bar"></span>
+                        <span class="nav-toggle-bar"></span>
+                    </button>
+                </center>
+            </section>
+            <div class="odd-left-menu odd-left-menu-hide">
+                <ul>
+                    <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Create Employee", "CreateEmployee", "Employee")</li>
+                    <li><a href="@Url.Action("FindEmployee","Employee")">Employee List</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!--Right Navigation-->
+        <aside class="right-slide">
+        </aside>
+
+        <!--Content Body -->
+        <aside class="content-body">
+            <section class="body-panel">
+                @*<div class="row">*@
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="breadcrumb">
+                        <li><a href="#">Workspace</a></li>
+                        <li class="breadcrumb-active">@ViewBag.pagename</li>
+                    </ul>
+                </div>
+                @*</div>*@
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @RenderBody()
+                </div>
+                @RenderSection("scripts", required: false)
+            </section>
+        </aside>
+
+        @if (ViewBag.errormsg != "")
+        {
+            string alerttype = "";
+            string display = "block";
+            if (ViewBag.errortype == "error")
+            {
+                alerttype = "alert-danger";
+            }
+
+            else if (ViewBag.errortype == "success")
+            {
+                alerttype = "alert-success";
+            }
+
+            else if (ViewBag.errortype == "warning")
+            {
+                alerttype = "alert-warning";
+            }
+
+             <div class="alert @alerttype" style="display:@display; z-index: 9999!important; width: 250px; position: fixed; top: 50%; right: 20px;">
+                <p>@ViewBag.errormsg</p>
+             </div>
+        }
+        </div>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                if ($('.alert').css('display', 'block')) {
+                    hideMask();
+                }
+            }, 5000);
+        });
+
+        function hideMask() {
+            $('.alert').css('display', 'none');
+        }
+    </script>
+</body>
+</html>

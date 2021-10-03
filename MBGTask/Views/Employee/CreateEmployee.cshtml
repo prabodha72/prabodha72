@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Create Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CreateEmployee", "Employee", FormMethod.Post))
+{
+    Html.RenderPartial("~/Views/Employee/partial/_CreateEmployee.cshtml");
+
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <label style="margin-bottom: 0;">Action</label>
+        <button class="btn btn-block btn-primary2">Create Employee</button>
+    </div>
+}
+
+

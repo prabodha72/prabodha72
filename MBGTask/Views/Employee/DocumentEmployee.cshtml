@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "DocumentEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        @Html.Partial("~/Views/Employee/partial/_submenu.cshtml")
+    </div>
+</div>
+@using (Html.BeginForm("DocumentEmployee", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            @Html.Partial("~/Views/Employee/partial/_EmployeeDocument.cshtml")
+        </div>
+    </div>
+}
+
+
+

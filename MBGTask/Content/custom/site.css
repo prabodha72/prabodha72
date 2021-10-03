@@ -1,0 +1,294 @@
+﻿body {
+    position: relative;
+}
+
+/**Top navigation css**/
+.navigation-header {
+    height: 60px;
+    background-color: #fdfdfd;
+    top: 0;
+    right: 0;
+    position: fixed;
+    width: 80%;
+    z-index: 9999;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.nav-toggle-botton {
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+    .nav-toggle-botton span.nav-toggle-bar {
+        padding: 2px;
+        width: 26px;
+        background: #0da09a;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+.odd-nav-brand {
+    position: absolute;
+    padding-top: 10px;
+}
+
+ul.navigation-menu-right {
+    background-color: #ffffff;
+    float: right;
+    padding-right: 10px;
+    padding-top: 10px;
+    list-style: none;
+}
+
+.navigation-menu-right .list-order-profile {
+    color: #0da09a;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+    .navigation-menu-right .list-order-profile:hover .order-profile-menu {
+        display: block;
+    }
+
+
+.profile-sm {
+    height: 47px;
+    width: 47px;
+    border-radius: 50%;
+    border: 1px solid #ff6a00;
+}
+
+.order-profile-menu {
+    z-index: 99;
+    width: 200px;
+    border: 1px solid #17d8d0;
+    position: absolute;
+    right: 0px;
+    transition: 0.2s all;
+    margin-top: 1px;
+    box-shadow: rgba(13,160,154,0.19) -3px 2px;
+    display: none;
+}
+
+    .order-profile-menu ul {
+        list-style: none;
+        padding: 0px;
+        background-color: #ffffff;
+    }
+
+        .order-profile-menu ul li {
+            background-color: #ffffff;
+            border-bottom: 0.2px solid #0da09a;
+            padding: 8px;
+            display: block;
+        }
+
+    .order-profile-menu li a {
+        color: #0da09a;
+        text-decoration: none;
+        display: block;
+        font-weight: 600;
+    }
+
+    .order-profile-menu li:hover {
+        color: #ff6a00;
+        text-decoration: none;
+        display: block;
+        background-color: #0da09a;
+    }
+
+        .order-profile-menu li:hover a {
+            color: #ff6a00;
+            font-weight: 600;
+        }
+
+/***Left navigation css****/
+
+.left-slide {
+    /*background-color: #f6f9f9;*/
+    position: relative;
+    /*width: 20%;*/
+    /*height: 100vh;*/
+    /*left: 0;
+    top: 0;*/
+    /*bottom: 0;*/
+    z-index: 9999;
+}
+
+    .left-slide .odd-brand {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20%;
+        height: 60px;
+        background-color: #ffffff;
+        align-content: center;
+        padding-top: 10px;
+        z-index: 9999;
+    }
+
+.odd-left-menu {
+    position: fixed;
+    top: 60.5px;
+    left: 0;
+    background-color: #f6f9f9;
+    height: 92vh;
+    /*width: 100%;*/
+    width: 20%;
+    overflow-y: auto;
+    z-index: 9998;
+}
+
+    /* width */
+    .odd-left-menu::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    /* Track */
+    .odd-left-menu::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    /* Handle */
+    .odd-left-menu::-webkit-scrollbar-thumb {
+        background: #f8d1b5;
+    }
+
+        /* Handle on hover */
+        .odd-left-menu::-webkit-scrollbar-thumb:hover {
+            background: #ff6a00;
+        }
+
+    .odd-left-menu ul {
+        background-color: #f6f9f9;
+        list-style: none;
+        width: 100%;
+        padding: 0px;
+    }
+
+        .odd-left-menu ul li {
+            background-color: #ffffff;
+            display: block;
+            padding: 10px;
+            border-bottom: 0.4px solid #0da09a;
+        }
+
+
+    .odd-left-menu li a {
+        display: block;
+        color: #0da09a;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .odd-left-menu li.active, .odd-left-menu ul li:hover {
+        background-color: #0da09a;
+        display: block;
+        color: #ff6a00;
+        font-weight: 600;
+    }
+
+        .odd-left-menu li.active a, .odd-left-menu ul li:hover a {
+            display: block;
+            color: #ff6a00;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+/*****Right navigation Css*****/
+
+.right-slide {
+}
+
+
+/*******Body Css*******/
+.content-body {
+    background-color: #f6f9f9;
+    position: absolute;
+    left: 20%;
+    top: 46px;
+    min-height: 90vh;
+    width: 80%;
+    /*padding: 0px 16px;
+    padding-bottom: 16px;*/
+    padding-top: 6px;
+    padding: 0px 6px;
+    padding-bottom: 6px;
+}
+
+    .content-body .body-panel {
+        background-color: #ffffff;
+        width: 100%;
+        position: relative;
+        min-height: 90vh;
+    }
+
+ul.breadcrumb {
+    padding: 8px 10px;
+    list-style: none;
+    background-color: #ffffff;
+    margin-top: 10px;
+}
+
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 15px;
+    }
+
+        ul.breadcrumb li + li:before {
+            padding: 8px;
+            color: #0da09a;
+            content: "/\00a0";
+        }
+
+        ul.breadcrumb li a {
+            color: #0da09a;
+            text-decoration: none;
+        }
+
+            ul.breadcrumb li a:hover {
+                color: #ff6a00;
+                text-decoration: none;
+            }
+
+.breadcrumb-active {
+    color: #ff6a00;
+    font-weight: 600;
+}
+
+
+/***********************************************************************************************/
+/***********************************Media Query start************************************************/
+/***********************************************************************************************/
+
+@media screen and (max-width: 480px) {
+    .content-body {
+        left: 0;
+        width: 100%;
+        /*padding-top: 10px;*/
+    }
+
+    .left-slide .odd-brand {
+        width: 20%;
+    }
+
+    .odd-left-menu-hide {
+        height: 91vh;
+        width: 80%;
+        left: -80%;
+        transition: 0.5s all;
+    }
+
+    .odd-left-menu-show {
+        height: 91vh;
+        width: 80%;
+        left: 0;
+        transition: 0.5s all;
+    }
+}

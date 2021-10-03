@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using MBGTask.Models;
+using MBGTask.Controllers;
+
+namespace MBGTask.DAL
+{
+    public class EmployeeDAL:IEmployeeDAL
+    {
+        private SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString);
+        public bool AddEmployee(Employee emp)
+        {
+            bool isSuccess = false;
+            try
+            {
+                //int 
+                SqlCommand cmd = new SqlCommand("spEmployee", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Action", "insert");
+                cmd.Parameters.AddWithValue("@Name", emp.Name);
+                cmd.Parameters.AddWithValue("@Email", emp.Email);
+                cmd.Parameters.AddWithValue("@Designation", emp.Designation);
+                con.Open();
+                int success = cmd.ExecuteNonQuery();
+                if(success == 1)
+                {
+                    isSuccess = true;
+                }
+                con.Close();               
+            }
+            catch (Exception ex){                       
+            }
+            return isSuccess;
+        }
+
+        public DataSet AllEmployee(Employee emp)
+        {
+            DataSet ds = null;
+            SqlCommand cmd = new SqlCommand("spEmployee", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Action", "search");
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            sda.Fill(ds);
+            con.Close();
+            return ds;
+        }
+
+        public DataSet SearchEmployee(Employee emp)
+        {
+            DataSet ds = null;
+            SqlCommand cmd = new SqlCommand("spEmployee", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Action", "search");
+            cmd.Parameters.AddWithValue("@Name", emp.Name);
+            cmd.Parameters.AddWithValue("@Email", emp.Email);
+            cmd.Parameters.AddWithValue("@Designation", emp.Designation);
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            sda.Fill(ds);
+            con.Close();
+            return ds;
+        }
+    }
+}

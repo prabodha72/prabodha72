@@ -1,0 +1,53 @@
+﻿body {
+}
+
+.ipt-bor-0 {
+}
+
+.ipt-bor-clr {
+    /*border: 1px solid #0da09a;*/
+    /*box-shadow: none;*/
+}
+
+    .ipt-bor-clr:focus {
+    }
+
+.form-control {
+    border-radius: 0 !important;
+    border: 1px solid #808080;
+    box-shadow: none;
+}
+
+    .form-control:focus {
+        border: 1px solid #0da09a;
+        box-shadow: none;
+        border-radius: 0 !important;
+    }
+
+.input-group-addon {
+    border: 1px solid #0da09a;
+    color: #ff6a00;
+    background-color: #0da09a;
+    box-shadow: none;
+    border-radius: 0 !important;
+}
+
+.btn-primary2 {
+    background-color: #0da09a;
+    color: #ff6a00;
+    font-weight: 600;
+    border-radius: 0 !important;
+}
+
+    .btn-primary2:hover {
+        background-color: #086763;
+        color: #ff6a00;
+        font-weight: 600;
+    }
+
+    .btn-primary2:focus {
+        background-color: #086763;
+        color: #ff6a00;
+        font-weight: 600;
+        border: 1px solid #086763;
+    }
